@@ -112,7 +112,7 @@ function startServer() {
                     })
                     console.log(match);
 
-                    packagesRef.child(match).child(deliveryChoice).set('Home Delivery');
+                    packagesRef.child(match).child('deliveryChoice').set('Home Delivery');
 
                     // match.child('deliveryChoice').set('Home Delivery');
 
