@@ -98,31 +98,32 @@ function startServer() {
                         return snapshot.key()
                         
                         // console.log(snapshot.val());
-                        // console.log(snapshot.child('deliveryChoice'))
-                        // console.log(snapshot.child('deliveryChoice').val())
+                            // console.log(snapshot.child('deliveryChoice'))
+                            // console.log(snapshot.child('deliveryChoice').val())
 
-                        
-                        // var packageObject = snapshot.child('deliveryChoice');
-                        // packageObject.update({})
-                        // snapshot.child('deliveryChoice').set('Home Delivery');
-                        // var packageObject = snapshot.key();
-                        // console.log(packageObject);
-                        // packageObject.set({ deliveryChoice: 'Home Delivery'});
+                            
+                            // var packageObject = snapshot.child('deliveryChoice');
+                            // packageObject.update({})
+                            // snapshot.child('deliveryChoice').set('Home Delivery');
+                            // var packageObject = snapshot.key();
+                            // console.log(packageObject);
+                            // packageObject.set({ deliveryChoice: 'Home Delivery'});
                     })
+                    console.log(match);
 
-                    match.child('deliveryChoice').set('Home Delivery');
+                    // match.child('deliveryChoice').set('Home Delivery');
 
                 // jquery.when(
-                //     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
-                //         console.log(snapshot.key());
-                //         console.log(snapshot.val());
-                //         var packageObject = snapshot.val();
-                //         console.log(packageObject);
-                //         return packageObject;
-                //     })
-                // ).then(function(packageObject){
-                //     packageObject.child('deliveryChoice').set('Home Delivery');
-                // })
+                    //     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                    //         console.log(snapshot.key());
+                    //         console.log(snapshot.val());
+                    //         var packageObject = snapshot.val();
+                    //         console.log(packageObject);
+                    //         return packageObject;
+                    //     })
+                    // ).then(function(packageObject){
+                    //     packageObject.child('deliveryChoice').set('Home Delivery');
+                    // })
 
             }
             res.writeHead(200, {
