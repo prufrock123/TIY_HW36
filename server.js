@@ -90,17 +90,25 @@ function startServer() {
 
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
 
-                jquery.when(
                     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                         console.log(snapshot.key());
                         console.log(snapshot.val());
                         var packageObject = snapshot.val();
                         console.log(packageObject);
-                        return packageObject;
+                        packageObject.child('deliveryChoice').set('Home Delivery');
                     })
-                ).then(function(packageObject){
-                    packageObject.child('deliveryChoice').set('Home Delivery');
-                })
+
+                // jquery.when(
+                //     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                //         console.log(snapshot.key());
+                //         console.log(snapshot.val());
+                //         var packageObject = snapshot.val();
+                //         console.log(packageObject);
+                //         return packageObject;
+                //     })
+                // ).then(function(packageObject){
+                //     packageObject.child('deliveryChoice').set('Home Delivery');
+                // })
 
             }
             res.writeHead(200, {
