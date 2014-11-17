@@ -84,6 +84,7 @@ function startServer() {
             var resp = new twilio.TwimlResponse();
             if (req.body.Body.trim().toLowerCase() === 'yes' ) {
                 var fromNum = req.body.From;
+                console.log(fromNum);
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
                 packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                     console.log(snapshot.key());
