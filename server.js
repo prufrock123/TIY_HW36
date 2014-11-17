@@ -9,6 +9,7 @@ function startServer() {
         app = express(),
         methodOverride = require('method-override'),
         request = require('request'),
+        jquery = require('jquery'),
         Firebase = require('firebase'),
         packagesRef = new Firebase('https://burning-inferno-529.firebaseio.com'),
         _ = require('lodash');
@@ -88,13 +89,19 @@ function startServer() {
                 console.log("trying");
 
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
-                packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
-                    console.log(snapshot.key());
-                    console.log(snapshot.val());
-                    var packageObject = snapshot.val();
-                    console.log(packageObject);
-                    // packageObject.child('deliveryChoice').set('Home Delivery');
+
+                $.when(
+                    packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                        console.log(snapshot.key());
+                        console.log(snapshot.val());
+                        var packageObject = snapshot.val();
+                        console.log(packageObject);
+                        return packageObject;
+                    })
+                ).then(function(packageObject){
+                    packageObject.child('deliveryChoice').set('Home Delivery');
                 })
+
             }
             res.writeHead(200, {
                 'Content-Type':'text/xml'
