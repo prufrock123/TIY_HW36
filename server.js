@@ -83,8 +83,8 @@ function startServer() {
         app.post('/message/', function(req, res) {
             var resp = new twilio.TwimlResponse();
             if (req.body.Body.trim().toLowerCase() === 'yes' ) {
-                var fromNum = req.body.From.toString();
-                // console.log(fromNum);
+                var fromNum = req.body.From.substring(1);
+                console.log(fromNum);
                 // console.log(fromNum.toString())
                 // fromNum.toString();
                 console.log("trying");
