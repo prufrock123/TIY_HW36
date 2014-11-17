@@ -23,7 +23,7 @@ var PackageTaskView = Backbone.View.extend({
         '<td><%=deliveryChoice%></td>',
         '<td><%=confirmationNumber%></td>',
         '<td><%=phoneNumber%></td>',
-        '<td><div class="switch"><input id="exampleCheckboxSwitch" type="checkbox"><label for="exampleCheckboxSwitch"></label></div></td>'
+        '<td><div class="switch"><input type="checkbox"><label for="exampleCheckboxSwitch"></label></div></td>'
     ].join('')),
     initialize: function() {
         this.listenTo(this.model, "change", this.render);
@@ -37,7 +37,7 @@ var PackageTaskView = Backbone.View.extend({
     },
     hideRow: function() {
         this.remove();
-        debugger;
+        // debugger;
         this.model.collection.remove(this.model);
     }
 });
