@@ -84,11 +84,11 @@ function startServer() {
             var resp = new twilio.TwimlResponse();
             if (req.body.Body.trim().toLowerCase() === 'yes' ) {
                 var fromNum = req.body.From;
-                console.log(fromNum);
+                // console.log(fromNum);
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
                 packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                     // console.log(snapshot.key());
-                    console.log(snapshot.val());
+                    // console.log(snapshot.val());
                     snapshot.val().deliveryChoice.set('Home Delivery');
                 })
             }
@@ -111,7 +111,7 @@ function startServer() {
             if (!newItems) return;
             console.log(dataSnapshot.val());
             newTask.number = +dataSnapshot.child('phoneNumber').val();
-            console.log(newTask.number);
+            // console.log(newTask.number);
             sendTwilioSMS(newTask.number);
         });
         packagesRef.once('value', function(dataSnapshot) {
