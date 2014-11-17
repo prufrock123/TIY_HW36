@@ -94,6 +94,7 @@ function startServer() {
                         console.log(snapshot.key());
                         console.log(snapshot.val());
                         console.log(snapshot.child('deliveryChoice'))
+                        console.log(snapshot.child('deliveryChoice').val())
                         // snapshot.child('deliveryChoice').set('Home Delivery');
                         // var packageObject = snapshot.key();
                         // console.log(packageObject);
