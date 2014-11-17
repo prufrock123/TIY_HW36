@@ -95,7 +95,7 @@ function startServer() {
                         console.log(snapshot.val());
                         var packageObject = snapshot.key();
                         console.log(packageObject);
-                        packageObject.child('deliveryChoice').set('Home Delivery');
+                        packageObject.set({ deliveryChoice: 'Home Delivery'});
                     })
 
                 // jquery.when(
