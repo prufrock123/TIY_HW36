@@ -93,7 +93,7 @@ function startServer() {
                     console.log(snapshot.val());
                     var packageObject = snapshot.val();
                     console.log(packageObject);
-                    packageObject.child('deliveryChoice').set('Home Delivery');
+                    // packageObject.child('deliveryChoice').set('Home Delivery');
                 })
             }
             res.writeHead(200, {
