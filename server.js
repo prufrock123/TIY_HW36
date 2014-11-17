@@ -90,7 +90,7 @@ function startServer() {
 
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
 
-                $.when(
+                jquery.when(
                     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                         console.log(snapshot.key());
                         console.log(snapshot.val());
