@@ -90,12 +90,16 @@ function startServer() {
 
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
 
-                    packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                    var match = packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                         console.log(snapshot.key());
                         console.log(snapshot.val());
-                        // console.log(snapshot.child('deliveryChoice'))
                         console.log(snapshot.child('deliveryChoice').val())
-                        snapshot.val().set({deliveryChoice: 'Home Delivery'});
+
+                        return snapshot.key()
+                        
+                        // console.log(snapshot.val());
+                        // console.log(snapshot.child('deliveryChoice'))
+                        // console.log(snapshot.child('deliveryChoice').val())
 
                         
                         // var packageObject = snapshot.child('deliveryChoice');
@@ -105,6 +109,8 @@ function startServer() {
                         // console.log(packageObject);
                         // packageObject.set({ deliveryChoice: 'Home Delivery'});
                     })
+
+                    match.child('deliveryChoice').set('Home Delivery');
 
                 // jquery.when(
                 //     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
