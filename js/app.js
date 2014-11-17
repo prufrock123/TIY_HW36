@@ -7,10 +7,9 @@ window.onload = app;
             {url: "./bower_components/jquery/dist/jquery.min.js"},
             {url: "./bower_components/lodash/dist/lodash.min.js"},
             {url: "./bower_components/backbone/backbone.js"},
-            {url: "./bower_components/pathjs/path.min.js"},
             {url: "./bower_components/foundation/js/foundation.js"},
-            {url: "//cdn.firebase.com/js/client/2.0.3/firebase.js"},
-            {url: "//cdn.firebase.com/libs/backfire/0.4.0/backfire.min.js"},
+            {url: "./bower_components/firebase/firebase.js"},
+            {url: "./bower_components/backfire/dist/backfire.js"},
             {url: "./js/packageTask.js"},
             // {url: "./findName.js"},
             // {url: "./js/ocrad.js"},
@@ -20,6 +19,11 @@ window.onload = app;
             _.templateSettings.interpolate = /{([\s\S]+?)}/g;
 
             // start app?
+            // The data we are syncing from Firebase
+            var collection = new PackageTaskCollection();
+            var app = new AppView({
+                collection: collection
+            });
         })
 
     }

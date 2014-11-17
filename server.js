@@ -11,7 +11,7 @@ function startServer() {
         request = require('request'),
         jquery = require('jquery'),
         Firebase = require('firebase'),
-        packagesRef = new Firebase('https://burning-inferno-529.firebaseio.com'),
+        packagesRef = new Firebase('https://burning-inferno-529.firebaseio.com/packagetasks'),
         _ = require('lodash');
 
     /**
