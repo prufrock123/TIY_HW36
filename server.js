@@ -82,7 +82,14 @@ function startServer() {
     function receiveTwilioSMS() {
         app.post('/message/', function(req, res) {
             var resp = new twilio.TwimlResponse();
-            resp.message('We will deliver!');
+            if (req.body.Body.trim().toLowerCase() === 'yes' ) {
+                var fromNum = req.body.From;
+                resp.message('Thank you, we will deliver your package between 6-9 PM');
+                packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                    snapshot.val().deliveryChoice.set('Home Delivery');
+                })
+            }
+            // resp.message('We will deliver!');
             res.writeHead(200, {
                 'Content-Type':'text/xml'
             })
