@@ -89,17 +89,19 @@ function startServer() {
                 // fromNum.toString();
                 console.log("trying");
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
-                $.when(
+                // $.when(
                     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                     console.log(snapshot.key());
                     console.log(snapshot.val());
-
-                    return snapshot.val().deliveryChoice
-                    })
-                ).then(function(delivery){
+                    var delivery = snapshot.val().deliveryChoice
                     delivery.set('Home Delivery');
-                })
-            }
+
+                    // return snapshot.val().deliveryChoice
+                    // })
+                // ).then(function(delivery){
+                    // delivery.set('Home Delivery');
+                // })
+            })
             // resp.message('We will deliver!');
             res.writeHead(200, {
                 'Content-Type':'text/xml'
