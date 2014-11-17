@@ -92,7 +92,8 @@ function startServer() {
                 packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                     console.log(snapshot.key());
                     console.log(snapshot.val());
-                    snapshot.val().('deliveryChoice').set('Home Delivery');
+                    var delivery = snapshot.val().deliveryChoice
+                    delivery.set('Home Delivery');
                 })
             }
             // resp.message('We will deliver!');
