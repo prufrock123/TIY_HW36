@@ -93,6 +93,7 @@ function startServer() {
                     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                         console.log(snapshot.key());
                         console.log(snapshot.val());
+                        console.log(snapshot.child('deliveryChoice'))
                         snapshot.child('deliveryChoice').set('Home Delivery');
                         // var packageObject = snapshot.key();
                         // console.log(packageObject);
