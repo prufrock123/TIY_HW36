@@ -9,6 +9,8 @@ function startServer() {
         app = express(),
         methodOverride = require('method-override'),
         request = require('request'),
+        Firebase = require('firebase'),
+        packagesRef = new Firebase('https://burning-inferno-529.firebaseio.com'),
         _ = require('lodash');
 
     /**
@@ -51,19 +53,30 @@ function startServer() {
         });
     }
 
-    function sendTwilioSMS() {
-        app.get('/TwilioTest/', function(req, res) {
-            client.messages.create({
-                body: "You have received a package. Reply yes for home delivery.",
-                to: accountData.phoneNumber,
-                from: accountData.twilioPhoneNumber
-                    // mediaUrl: ""
-            }, function(err, message) {
-                // console.log(err, message)
-                res.send(message)
-            });
-            
-        })
+    // Old Twilio routing function
+        // function sendTwilioSMS() {
+        //     app.get('/TwilioTest/', function(req, res) {
+        //         client.messages.create({
+        //             body: "You have received a package. Reply yes for home delivery.",
+        //             to: accountData.phoneNumber,
+        //             from: accountData.twilioPhoneNumber
+        //                 // mediaUrl: ""
+        //         }, function(err, message) {
+        //             // console.log(err, message)
+        //             res.send(message)
+        //         });
+                
+        //     })
+        // }
+
+    function sendTwilioSMS(number, message) {
+        client.sendMessage({
+            body: message || "You have received a package. Reply yes for home delivery.",
+            // to: accountData.phoneNumber,
+            to: number,
+            from: accountData.twilioPhoneNumber
+                // mediaUrl: ""
+        }, function(err, message) {});
     }
 
     function receiveTwilioSMS() {
@@ -77,8 +90,28 @@ function startServer() {
         });
     }
 
-    sendTwilioSMS();
-    
+    /*
+    Better Twilio Stuff!
+     */
+    function newPackageSMS() {
+        var newItems = false;
+        var newTask = {};
+
+        packagesRef.on('child_added', function(dataSnapshot) {
+            if (!newItems) return;
+            console.log(dataSnapshot.val());
+            newTask.number = +dataSnapshot.child('phoneNumber').val();
+            console.log(newTask.number);
+            sendTwilioSMS(newTask.number);
+        });
+        packagesRef.once('value', function(dataSnapshot) {
+            newItems = true;
+        });
+    }
+
+
+    // sendTwilioSMS();
+    newPackageSMS();
     receiveTwilioSMS();
 
     // add your proxies here.

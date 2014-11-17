@@ -9,10 +9,13 @@ window.onload = app;
             {url: "./bower_components/backbone/backbone.js"},
             {url: "./bower_components/pathjs/path.min.js"},
             {url: "./bower_components/foundation/js/foundation.js"},
-            {url: "./findName.js"},
-            {url: "./js/ocrad.js"},
-            {url: "./js/testOCR.js"},
-            {url: "./js/firebase.js"}
+            {url: "//cdn.firebase.com/js/client/2.0.3/firebase.js"},
+            {url: "//cdn.firebase.com/libs/backfire/0.4.0/backfire.min.js"},
+            {url: "./js/packageTask.js"},
+            // {url: "./findName.js"},
+            // {url: "./js/ocrad.js"},
+            {url: "./js/testOCR.js"}
+            // {url: "./js/firebase.js"}
         ).then(function(){
             _.templateSettings.interpolate = /{([\s\S]+?)}/g;
 

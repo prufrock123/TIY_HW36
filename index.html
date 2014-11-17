@@ -5,20 +5,89 @@
     <link rel="stylesheet" type="text/css" href="./bower_components/normalize.css/normalize.css">
     <link rel="stylesheet" type="text/css" href="./bower_components/typeplate-starter-kit/css/typeplate.css">
     <link rel="stylesheet" type="text/css" href="./bower_components/foundation/css/foundation.css">
-    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    <!--     // <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    // <script src="https://cdn.firebase.com/libs/backfire/0.4.0/backfire.min.js"></script> -->
     <title></title>
 </head>
 
 <body>
     <script type="text/javascript" src="./bower_components/Loader/loader.js" id="loaderjs" data-app="./js/app.js"></script>
-    <script src="https://cdn.firebase.com/libs/backfire/0.4.0/backfire.min.js"></script>
+
 
     <!-- <a href="/TwilioTest/hello" id="send" class="button">Send SMS</a> -->
     <a href="#" id="send" class="button">Update Data</a>
     <a href="/TwilioTest" id="SMS" class="button">Send SMS</a>
 
 
-    <form>
+    <div id="packageApp">
+
+        <form id="new-package">
+            <div class="row">
+                <div class="large-4 columns">
+                    <label>Tenant Name
+                        <input name="tenantName" type="text" placeholder="Tenant Name" />
+                    </label>
+                </div>
+                <div class="large-4 columns">
+                    <label>Unit Number
+                        <input name="unitNumber" type="text" placeholder="Unit Number" />
+                    </label>
+                </div>
+                <div class="large-4 columns">
+                    <label>Item Number
+                        <input name="itemNumber" type="text" placeholder="Item Number" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+<!--                 <div class="large-6 columns">
+                    <label>Delivery Choice
+                        <input name="deliveryChoice" type="text" placeholder="Delivery Choice" />
+                    </label>
+                </div> -->
+                <div class="large-2 columns">
+                    <label>Confirmation Number
+                        <input name="confirmationNumber" type="text" placeholder="Conf #" />
+                    </label>
+                </div>
+                <div class="large-4 columns">
+                    <label>Phone Number
+                        <input name="phoneNumber" type="text" placeholder="Phone Number" />
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="large-12 columns">
+                <button id="add-package">Add Package</button>
+            </div>
+        </div>
+        <!-- <input type="text" id="new-package" placeholder="New Package" /> -->
+        
+        <div class="row">
+            <div class="large-12 columns">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="200">Tenant Name</th>
+                            <th width="100">Unit Number</th>
+                            <th width="200">Item Number</th>
+                            <th width="200">Delivery Choice</th>
+                            <th width="100">Confirmation Number</th>
+                            <th width="200">Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--     <form>
         <div class="row">
             <div class="large-12 columns">
                 <label>First Name
@@ -40,36 +109,10 @@
                 </label>
             </div>
         </div>
-    </form>
-
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="panel">
-                <h1>Menu</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div id="list" class="large-12 columns">
-        </div>
-    </div>
+    </form> -->
 
 
-
-
-    <footer class="row">
-        <div class="large-12 columns">
-            <hr/>
-            <div class="row">
-                <div class="large-5 columns">
-                    <p>© GloboTech LTD inc. LLC All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <canvas id="myCanvas" width="411" height="101"></canvas>
+    <!-- <canvas id="myCanvas" width="411" height="101"></canvas> -->
 </body>
 
 </html>
