@@ -89,10 +89,14 @@ function startServer() {
                 // fromNum.toString();
                 console.log("trying");
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
-                packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                $.when(
+                    packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                     console.log(snapshot.key());
                     console.log(snapshot.val());
-                    var delivery = snapshot.val().deliveryChoice
+
+                    return snapshot.val().deliveryChoice
+                    })
+                ).then(function(delivery){
                     delivery.set('Home Delivery');
                 })
             }
