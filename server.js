@@ -112,7 +112,7 @@ function startServer() {
                     })
                     console.log(match);
 
-                    // match.child('deliveryChoice').set('Home Delivery');
+                    match.child('deliveryChoice').set('Home Delivery');
 
                 // jquery.when(
                     //     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
