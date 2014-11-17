@@ -101,7 +101,8 @@ function startServer() {
             });
             res.end(resp.toString());
         });
-
+    }
+    
     /*
     Better Twilio Stuff!
      */
