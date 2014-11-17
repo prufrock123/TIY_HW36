@@ -85,6 +85,7 @@ function startServer() {
             if (req.body.Body.trim().toLowerCase() === 'yes' ) {
                 var fromNum = req.body.From;
                 console.log(fromNum);
+                console.log("trying");
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
                 packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                     // console.log(snapshot.key());
