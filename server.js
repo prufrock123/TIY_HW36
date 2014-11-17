@@ -93,9 +93,10 @@ function startServer() {
                     packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                         console.log(snapshot.key());
                         console.log(snapshot.val());
-                        var packageObject = snapshot.key();
-                        console.log(packageObject);
-                        packageObject.set({ deliveryChoice: 'Home Delivery'});
+                        snapshot.child('deliveryChoice').set('Home Delivery');
+                        // var packageObject = snapshot.key();
+                        // console.log(packageObject);
+                        // packageObject.set({ deliveryChoice: 'Home Delivery'});
                     })
 
                 // jquery.when(
