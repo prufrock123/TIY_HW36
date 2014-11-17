@@ -90,12 +90,13 @@ function startServer() {
 
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
 
-                    var match = packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
+                    var match
+                    packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
                         console.log(snapshot.key());
                         console.log(snapshot.val());
                         console.log(snapshot.child('deliveryChoice').val())
 
-                        return snapshot.key()
+                        match = snapshot.key()
                         
                         // console.log(snapshot.val());
                             // console.log(snapshot.child('deliveryChoice'))
