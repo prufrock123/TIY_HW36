@@ -83,15 +83,15 @@ function startServer() {
         app.post('/message/', function(req, res) {
             var resp = new twilio.TwimlResponse();
             if (req.body.Body.trim().toLowerCase() === 'yes' ) {
-                var fromNum = req.body.From;
+                var fromNum = req.body.From.toString();
                 console.log(fromNum);
-                console.log(fromNum.toString())
-                fromNum.toString();
+                // console.log(fromNum.toString())
+                // fromNum.toString();
                 console.log("trying");
                 resp.message('Thank you, we will deliver your package between 6-9 PM');
                 packagesRef.orderByChild('phoneNumber').equalTo(fromNum).on('child_added', function(snapshot){
-                    // console.log(snapshot.key());
-                    // console.log(snapshot.val());
+                    console.log(snapshot.key());
+                    console.log(snapshot.val());
                     snapshot.val().deliveryChoice.set('Home Delivery');
                 })
             }
