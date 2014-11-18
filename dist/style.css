@@ -34,7 +34,17 @@ button, .button {
 	background-color: #FF7665;
 	border-radius: 5px;
 	box-shadow: 1px 1px 1px black;
-	color: lightgray;
+	color: white;
+	margin: 0 auto 7% auto;
+	display: block;
+}
+
+button:hover, button:focus, .button:hover, .button:focus {
+	background-color: #2F6675;
+}
+
+#mainTitle {
+	color: white;
 }
 
 

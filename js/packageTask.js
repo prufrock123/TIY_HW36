@@ -17,18 +17,20 @@ var PackageTaskView = Backbone.View.extend({
     el: '<tr>',
     // template: _.template("<div class='row'><div class='large-12 columns'><h4><%= title %></h4></div></div>"),
     template: _.template([
-        '<td><%= tenantName%></td>',
-        '<td><%= unitNumber%></td>',
+        '<td><%=tenantName%></td>',
+        '<td><%=unitNumber%></td>',
         '<td><%=itemNumber%></td>',
         '<td><%=deliveryChoice%></td>',
         '<td><%=confirmationNumber%></td>',
         '<td><%=phoneNumber%></td>',
-        '<td><div class="switch"><input type="checkbox"><label for="exampleCheckboxSwitch"></label></div></td>'
+        '<td><div class="switch"><input id="<%=id%>" type="checkbox"><label for="<%=id%>"></label></div></td>'
     ].join('')),
     initialize: function() {
         this.listenTo(this.model, "change", this.render);
     },
     render: function() {
+    	console.dir(this.model)
+    	console.dir(this.model.toJSON())
         this.$el.html(this.template(this.model.toJSON()));
         return this;
     },
@@ -36,7 +38,7 @@ var PackageTaskView = Backbone.View.extend({
         "click .switch": "hideRow"
     },
     remove: function(){
-		this.$el.fadeOut(function(){
+		this.$el.fadeOut('slow', function(){
 			$(this).remove();
 		}); 
 	},
