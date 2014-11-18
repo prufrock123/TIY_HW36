@@ -35,9 +35,15 @@ var PackageTaskView = Backbone.View.extend({
     events: {
         "click .switch": "hideRow"
     },
+    remove: function(){
+		this.$el.fadeOut(function(){
+			$(this).remove();
+		}); 
+	},
     hideRow: function() {
         this.remove();
         // debugger;
+        // this.slideUp(400, _.bind(this.model.collection.remove(this.model), this));
         this.model.collection.remove(this.model);
     }
 });
@@ -61,7 +67,9 @@ var AppView = Backbone.View.extend({
         var view = new PackageTaskView({
             model: package
         });
-        this.list.append(view.render().el);
+        var rendered = view.render();
+        $(rendered.el).appendTo(this.list).hide().fadeIn().slideDown();
+        // this.list.append(view.render().el);
     },
     createPackage: function(e) {
         // if (!this.input.tenantName) { return; }

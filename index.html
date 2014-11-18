@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="./bower_components/normalize.css/normalize.css">
     <link rel="stylesheet" type="text/css" href="./bower_components/typeplate-starter-kit/css/typeplate.css">
     <link rel="stylesheet" type="text/css" href="./bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="./dist/style.css">
     <!--     // <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
     // <script src="https://cdn.firebase.com/libs/backfire/0.4.0/backfire.min.js"></script> -->
     <title></title>
@@ -18,8 +19,12 @@
 <!--     <a href="#" id="send" class="button">Update Data</a>
     <a href="/TwilioTest" id="SMS" class="button">Send SMS</a> -->
 
+<div class="row">
 
-    <div id="packageApp">
+    <div class="large-12 columns" id="packageApp">
+    <!-- <p><img src="http://placehold.it/1000x400&text=[banner img]"/></p> -->
+    <p><img id="Jimmy" src="./Jimmy.svg"/></p>
+    <h1>My Friend Jimmy</h1>
 
         <form id="new-package">
             <div class="row">
@@ -45,7 +50,7 @@
                         <input name="deliveryChoice" type="text" placeholder="Delivery Choice" />
                     </label>
                 </div> -->
-                <div class="large-2 columns">
+                <div class="large-8 columns">
                     <label>Confirmation Number
                         <input name="confirmationNumber" type="text" placeholder="Conf #" />
                     </label>
@@ -58,7 +63,7 @@
             </div>
         </form>
         <div class="row">
-            <div class="large-12 columns">
+            <div class="large-3 large-centered columns">
                 <button id="add-package">Simulate Scan</button>
             </div>
         </div>
@@ -114,6 +119,8 @@
 
 
     <!-- <canvas id="myCanvas" width="411" height="101"></canvas> -->
+
+</div>
 </body>
 
 </html>
